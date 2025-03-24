@@ -41,21 +41,23 @@
         <input type="hidden" name="access_key" value="aaaf4f65-2d13-40f6-ae90-afeefdc65561">
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Name</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" name="name" placeholder="Name"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" name="name" placeholder="Name" required></textarea>
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="name@example.com">
+            <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="name@example.com" required>
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-            <textarea class="form-control" id="exampleFormControlTextarea2" name="message" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea2" name="message" rows="3" required></textarea>
           </div>
+          <div class="h-captcha" data-captcha="true"></div>
           <div>
             <input class="contactB" id="contactB" style="font-size: 1.2rem;" type="submit" value="Submit">
             <p id="contactText"></p>
           </div>
         </form>
+        <script src="https://web3forms.com/client/script.js" async defer></script>
         <script src="script.js"></script>
     </body>
 </html>
