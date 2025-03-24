@@ -1,19 +1,4 @@
-document.getElementById('myForm').addEventListener('submit', function(event) {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-
-    // Check if the fields are empty
-    if (!name || !email) {
-        event.preventDefault(); // Prevent form submission
-        document.getElementById('message').style = 'color: red';
-        document.getElementById('contactText').textContent = 'Please fill in all required fields.';
-    } else {
-        document.getElementById('message').style = 'color: green';
-        document.getElementById('message').textContent = 'Form submitted successfully!';
-    }
-});
-
-
+// Capthca validation
 const form = document.getElementById('myForm');
 
 form.addEventListener('submit', function(e) {
@@ -25,4 +10,42 @@ form.addEventListener('submit', function(e) {
         alert("Please fill out captcha field")
         return
     }
+});
+
+const result = document.getElementById('contactText');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const formData = new FormData(form);
+  const object = Object.fromEntries(formData);
+  const json = JSON.stringify(object);
+  result.innerHTML = "Please wait..."
+
+    fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let json = await response.json();
+            if (response.status == 200) {
+                result.innerHTML = json.message;
+            } else {
+                console.log(response);
+                result.innerHTML = json.message;
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            result.innerHTML = "Something went wrong!";
+        })
+        .then(function() {
+            form.reset();
+            setTimeout(() => {
+                result.style.display = "none";
+            }, 3000);
+        });
 });
