@@ -12,3 +12,17 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
         document.getElementById('message').textContent = 'Form submitted successfully!';
     }
 });
+
+
+const form = document.getElementById('myForm');
+
+form.addEventListener('submit', function(e) {
+
+    const hCaptcha = form.querySelector('textarea[name=h-captcha-response]').value;
+
+    if (!hCaptcha) {
+        e.preventDefault();
+        alert("Please fill out captcha field")
+        return
+    }
+});

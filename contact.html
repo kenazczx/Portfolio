@@ -34,7 +34,7 @@
           </div>
         </div>
       </nav>
-      <form action="https://api.web3forms.com/submit" method="POST" class="contactPage">
+      <form action="https://api.web3forms.com/submit" method="POST" class="contactPage" id="myForm">
         <div>
           <h3 style="padding-bottom: 10px; font-size: 2rem;">Contact Me!</h3>
         </div>
@@ -56,6 +56,7 @@
             <input class="contactB" id="contactB" style="font-size: 1.2rem;" type="submit" value="Submit">
             <p id="contactText"></p>
           </div>
+          <input type="hidden" name="redirect" value="contact.html">
         </form>
         <script src="https://web3forms.com/client/script.js" async defer></script>
         <script src="script.js"></script>
